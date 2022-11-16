@@ -2,7 +2,7 @@
 marp: true
 math: katex
 header: "第4回 出力層の設計"
-footer: "2022/11/17 ゼロイチゼミ: <a href=\"https://twitter.com/nu_zero_one\" style=\"color:white\">@nu_zero_one</a>"
+footer: "2022/11/17 ゼロイチゼミ <a href=\"https://twitter.com/nu_zero_one\" style=\"color:white\">@nu_zero_one</a>"
 theme: 01semi
 paginate: true
 ---
@@ -16,7 +16,7 @@ _paginate: false
 
 ---
 
-## 出力層とは
+# 出力層とは
 出力層（ニューラルネットワークの最後の部分）
 
 ![h:380](images/output_layer.png)
@@ -185,3 +185,63 @@ array([9.99954602e-01, 4.53978687e-05, 1.68883521e-48])
 ```
 
 ↑ちゃんと計算できた！
+
+---
+
+## 関数にまとめよう！ (問題)
+
+```python
+def softmax(a):
+    # ↓ここにコードを書いてね
+
+
+
+    return y
+```
+
+↓こうなればOK
+
+```python
+>>> a = np.array([1000, 1001, 999])
+>>> softmax(a)
+array([0.24472847, 0.66524096, 0.09003057])
+```
+
+---
+
+## 関数にまとめよう！ (解答)
+
+```python
+def softmax(a):
+    a_max = np.max(a)
+    exp_a = np.exp(a - a_max)
+    sum_exp_a = np.sum(exp_a)
+    y = exp_a / sum_exp_a
+
+    return y
+```
+
+---
+
+# 出力層のニューロン数は？
+
+**$n$クラス分類**（入力を$n$種類に分類する問題）では$n$個に設定する
+
+![bg 30%](images/output_layer.png)
+
+<br><br>
+
+#### 例
+- 手書き数字の認識（$0〜9$）では$10$個のニューロンを設定
+- アルファベット（$a〜z$）の認識では$26$個に設定
+
+---
+
+# まとめ
+
+- 今回までで、パーセプトロンを勉強してきました
+  1. 論理回路
+  2. 行列、信号伝達の仕組み
+- 次回は第3章の最終回**手書き数字の分類**です
+
+**今までで不安なところを復習する時間！**
