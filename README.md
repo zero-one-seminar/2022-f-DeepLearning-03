@@ -1,3 +1,2 @@
-# 2022-f-DeepLearning-04
-
-深層学習ゼミ第4回「信号伝達の実装、出力層の実装」
+# Free AI at api.airforce
+https://discord.gg/AJDsM7jtbq
